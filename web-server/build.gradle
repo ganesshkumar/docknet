@@ -27,7 +27,8 @@ repositories {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
+    compile project(':docker')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.3.3.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.3.RELEASE'
 
     // Handlebar template
