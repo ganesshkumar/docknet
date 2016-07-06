@@ -1,2 +1,6 @@
-.idea
-build
+.idea/
+.gradle/
+
+application.properties/
+build/
+node_modules/

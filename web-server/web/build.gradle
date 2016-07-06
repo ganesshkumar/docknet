@@ -1,0 +1,35 @@
+task npmBin << {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            executable = 'npm'
+            args = ['bin']
+            standardOutput = os
+        }
+        ext.binPath = os.toString().trim() + "/"
+    }
+}
+
+task npm(type: Exec) {
+    description = "Grab NodeJS dependencies (from package.json)"
+    commandLine = ["npm", "install"]
+    inputs.file "package.json"
+    outputs.dir "node_modules"
+
+    tasks.npmBin.execute()
+}
+
+task webpack(type: Exec) {
+    commandLine './node_modules/.bin/webpack'
+    standardOutput = new ByteArrayOutputStream()
+
+    ext.output = {
+        return standardOutput.toString();
+    }
+}
+
+task buildWebAssets() {
+    println "Building web assets for Client-UI"
+}
+
+buildWebAssets.dependsOn(npm)
+buildWebAssets.dependsOn(webpack)

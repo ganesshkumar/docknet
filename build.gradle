@@ -1,41 +1,23 @@
 buildscript {
-    ext {
-        springBootVersion = '1.3.6.RELEASE'
-    }
     repositories {
         mavenCentral()
     }
+
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-apply plugin: 'java'
+rootProject.version = '1.0'
+
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
 
-jar {
-    baseName = 'dockenet'
-    version = '0.0.1-SNAPSHOT'
-}
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.3.RELEASE'
-
-    // Handlebar template
-    compile group: 'pl.allegro.tech.boot', name: 'handlebars-spring-boot-starter', version: '0.2.12'
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.12'
 }
-
