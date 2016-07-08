@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Test from './index/test';
 import { ReactRouter, Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 /*
@@ -29,5 +30,5 @@ import { ReactRouter, Router, Route, IndexRoute, hashHistory } from 'react-route
 
 
 ReactDOM.render((
-    <h1> Hello from React </h1>
+    <h1> <Test /> </h1>
 ), document.getElementById('application'));
