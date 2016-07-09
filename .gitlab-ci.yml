@@ -1,9 +1,0 @@
-image: ganesshkumar/spring-build
-
-stages:
-    - build
-    
-build-jar:
-    stage: build
-    script:
-        - ./gradlew clean jar
